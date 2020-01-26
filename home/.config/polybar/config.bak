@@ -1,0 +1,233 @@
+;==========================================================
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;                config by Vinícius Teles
+;
+;
+;
+;          To learn more about how to configure Polybar
+;          go to https://github.com/jaagr/polybar
+;
+;          The README contains alot of information
+;
+;
+;==========================================================
+
+[colors]
+background = #66000000
+background-alt = #222
+foreground = #fafafa
+foreground-alt = #666666
+
+
+[utils]
+# You will need to configure these lines for some modules works
+netinterface = wlp2s0
+
+# To see the adapter and battery, execute this command ->   ls /sys/class/power_supply/ -1
+adapter = AC0
+battery = BAT0
+
+
+[bar/top]
+width = 100%
+height = 28
+
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+border = 0
+
+padding-left = 2
+padding-right = 1
+
+module-margin-left = 0
+module-margin-right = 2
+
+font-0 = Hack Nerd Font:pixelsize=10;2
+font-1 = Cantarell:size=12;2
+font-2 = Hack Nerd Font:pixelsize=11:weight=bold;2
+font-3 = Cantarell:pixelsize=11:weight=140;2
+font-4 = MesloLGLDZ Nerd Font:pixelsize=12;2
+font-5 = Weather Icons:size=11:weight=bold;2
+font-6 = MesloLGLDZ Nerd Font:pixelsize=10;2
+
+
+line-size = 2
+
+modules-left = logo title
+modules-center = 
+modules-right = alsa battery network weather date search settings
+
+tray-position = right
+tray-padding = 2
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+
+#### if you want the workspace indicator, customize this
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+label-focused = %name%
+label-focused-font = 3
+label-focused-padding = 2
+
+label-unfocused = 
+label-unfocused-padding = 0
+
+label-visible = 
+label-visible-padding = ${self.label-unfocused-padding}
+
+label-urgent = %name%
+
+
+[module/date]
+type = internal/date
+
+date = "%a, %d %b "
+date-alt = "%a, %d %b"
+
+time-alt = %H:%M
+time = %H:%M
+
+label = %date% %time%
+label-font = 4
+
+interval = 1
+
+
+#module for network display
+[module/network]
+type = internal/network
+interface = ${utils.netinterface}
+interval = 3.0
+
+format-connected = <label-connected>
+label-connected-font= 7
+label-connected = 
+
+format-disconnected = <label-disconnected>
+label-disconnected-font = 7
+label-disconnected = 睊
+
+
+#module for volume display
+[module/alsa]
+type = internal/alsa
+
+format-volume = <ramp-volume>
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-font = 5
+label-muted = "ﱝ"
+label-muted-font = 5
+format-muted = <label-muted>
+
+
+[module/separator]
+type = custom/script
+exec = echo " | "
+
+[module/battery]
+type = internal/battery
+
+full-at = 99
+
+; Use the following commanto list batteries and adapters:
+; $ ls -1 /sys/class/powerupply/
+battery = ${utils.battery}
+adapter = ${utils.adapter}
+
+poll-interval = 5
+
+time-format = %H:%M
+
+format-charging = <animation-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+
+label-charging = 
+label-discharging = %percentage%%
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+bar-capacity-width = 10
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
+
+animation-discharging-framerate = 500
+
+label-font = 4
+
+[module/settings]
+type = custom/script
+exec = echo ""
+click-left = termite -e "vim $HOME/.config/polybar/config"
+label-font = 5
+
+[module/search]
+type = custom/script
+
+click-left = xdg-open "https://www.google.com/search?q=$(rofi -dmenu -p 'Google:' -theme ~/.config/rofi/theme.rasi -lines -1)" &
+exec = echo ""
+
+[module/weather]
+type = custom/script
+exec = ~/polybar-scripts/openweathermap-detailed.sh
+interval = 600
+label-font = 6
+
+[module/title]
+type = internal/xwindow
+
+format = <label>
+format-padding = 0
+
+label = %title%
+label-maxlen = 50
+label-font = 4
+
+label-empty = i3
+label-empty-font = 4
+
+[module/logo]
+type = custom/script
+exec = echo ""
+label-font = 5
+
+click-left = rofi -show run -theme ~/.config/rofi/theme.rasi -location 1 -yoffset 28 
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 5
+margin-bottom = 0
