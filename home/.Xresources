@@ -1,0 +1,105 @@
+!! xrdb ~/.Xresources
+
+!!$HOME/.Xresources
+URxvt.preeditType:Root
+!!调整此处设置输入法
+URxvt.inputMethod:fcitx
+!!颜色设置
+! URxvt.depth:32
+!!中括号内数表示透明度
+! URxvt.inheritPixmap:true
+! URxvt.background:[100]#000000
+! URxvt.foreground:#ffffff
+! URxvt.colorBD:Gray95
+! URxvt.colorUL:Green
+! URxvt.color1:Red2
+! URxvt.color4:RoyalBlue
+! URxvt.color5:Magenta2
+! URxvt.color8:Gray50
+! URxvt.color10:Green2
+! URxvt.color12:DodgerBlue
+! URxvt.color14:Cyan2
+! URxvt.color15:Gray95
+!!URL操作
+! URxvt.urlLauncher:chromium
+
+ 
+Xft.dpi:                        109
+URxvt*termName:                 rxvt-256color
+URxvt*font:                     xft:Menlo:pixelsize=12,xft:Inconsolata\ for\ Powerline:pixelsize=12
+URxvt.depth:                    0
+URxvt*lineSpace:                1
+URxvt.letterSpace:              -1
+! URxvt.iso14755:                 false
+! URxvt.iso14755_52:              false
+URxvt*geometry:                 65x17
+! URxvt.scrollBar:                false
+! URxvt*loginShell:               true
+URxvt.internalBorder:           8
+URxvt.perl-ext-common:          default,clipboard
+! URxvt.keysym.Shift-Control-C:   perl:clipboard:copy
+! URxvt.keysym.Shift-Control-V:   perl:clipboard:paste
+URxvt.clipboard.autocopy:       true
+
+! Colors
+*background:   [97]#282a36
+*foreground:   #eff0eb
+*cursorColor:  #9aedfe
+
+*color0:      #33303b
+*color8:      #4f4b58
+*color1:      #ff5c57
+*color9:      #ff5c57
+*color2:      #5af78e
+*color10:     #5af78e
+*color3:      #f3f99d
+*color11:     #f3f99d
+*color4:      #57c7ff
+*color12:     #57c7ff
+*color5:      #ff6ac1
+*color13:     #ff6ac1
+*color6:      #9aedfe
+*color14:     #9aedfe
+*color7:      #eff0eb
+*color15:     #eff0eb
+
+
+URxvt.urlLauncher:firefox
+URxvt.matcher.button:1
+Urxvt.perl-ext-common:matcher
+!!滚动条设置
+URxvt.scrollBar:False
+URxvt.scrollBar_floating:False
+URxvt.scrollstyle:plain
+!!滚屏设置
+URxvt.mouseWheelScrollPage:True
+URxvt.scrollTtyOutput:False
+URxvt.scrollWithBuffer:True
+URxvt.scrollTtyKeypress:True
+!!光标闪烁
+URxvt.cursorBlink:True
+URxvt.saveLines:3000
+!!边框
+URxvt.borderLess:False
+!!字体设置
+! Xft.dpi:96
+URxvt.font:xft:Source Code Pro:antialias=True:pixelsize=16,xft:WenQuanYi Zen Hei:pixelsize=16
+URxvt.boldfont:xft:Source Code Pro:antialias=True:pixelsize=16,xft:WenQuanYi Zen Hei:pixelsize=16
+
+! 实现ctrl+shift+c/v的复制粘贴
+! https://unix.stackexchange.com/questions/444773/how-to-disable-the-ctrlshift-binding-iso-14755-in-urxvt
+! https://unix.stackexchange.com/questions/294337/rebinding-ctrl-alt-cv-to-ctrl-shift-cv-in-urxvt-9-20
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+! 一定要写全名及大写的C/V,否则无效
+! Shift/Control 顺序无关
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+
+
+! 禁用之前的复制粘贴方案
+URxvt.keysym.Control-Meta-c: builtin-string:
+URxvt.keysym.Control-Meta-v: builtin-string:
+
+

@@ -249,6 +249,8 @@ ramp-signal-3 = 
 ramp-signal-4 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
+
+
 [module/eth]
 type = internal/network
 interface = enp0s25
