@@ -36,7 +36,7 @@ URxvt*geometry:                 65x17
 ! URxvt.scrollBar:                false
 ! URxvt*loginShell:               true
 URxvt.internalBorder:           8
-URxvt.perl-ext-common:          default,clipboard
+! URxvt.perl-ext-common:          default,clipboard
 ! URxvt.keysym.Shift-Control-C:   perl:clipboard:copy
 ! URxvt.keysym.Shift-Control-V:   perl:clipboard:paste
 URxvt.clipboard.autocopy:       true
@@ -66,7 +66,7 @@ URxvt.clipboard.autocopy:       true
 
 URxvt.urlLauncher:firefox
 URxvt.matcher.button:1
-Urxvt.perl-ext-common:matcher
+! Urxvt.perl-ext-common:matcher
 !!滚动条设置
 URxvt.scrollBar:False
 URxvt.scrollBar_floating:False
@@ -86,8 +86,17 @@ URxvt.borderLess:False
 ! URxvt.font:xft:Source Code Pro:antialias=True:pixelsize=15,xft:WenQuanYi Zen Hei:pixelsize=15
 ! URxvt.boldfont:xft:Source Code Pro:antialias=True:pixelsize=15,xft:WenQuanYi Zen Hei:pixelsize=15
 
-URxvt.font:xft:Hack:antialias=True:pixelsize=13,xft:WenQuanYi Zen Hei:pixelsize=13
-URxvt.boldfont:xft:Hack:antialias=True:pixelsize=13,xft:WenQuanYi Zen Hei:pixelsize=13
+URxvt.font:xft:Hack:antialias=True:pixelsize=14,xft:WenQuanYi Zen Hei:pixelsize=14
+URxvt.boldfont:xft:Hack:antialias=True:pixelsize=14,xft:WenQuanYi Zen Hei:pixelsize=14
+
+URxvt.perl-ext-common: ...,font-size
+URxvt.keysym.C-equal:     perl:font-size:increase
+URxvt.keysym.C--:   perl:font-size:decrease
+! URxvt.keysym.C-S-Up:   perl:font-size:incglobal
+! URxvt.keysym.C-S-Down: perl:font-size:decglobal
+URxvt.keysym.C-0:      perl:font-size:reset
+URxvt.keysym.C-slash:  perl:font-size:show
+URxvt.font-size.step:  2
 
 ! 实现ctrl+shift+c/v的复制粘贴
 ! https://unix.stackexchange.com/questions/444773/how-to-disable-the-ctrlshift-binding-iso-14755-in-urxvt
