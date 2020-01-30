@@ -81,15 +81,19 @@ URxvt.cursorBlink:True
 URxvt.saveLines:3000
 !!边框
 URxvt.borderLess:False
+
+
+
 !!字体设置
 ! Xft.dpi:96
 ! URxvt.font:xft:Source Code Pro:antialias=True:pixelsize=15,xft:WenQuanYi Zen Hei:pixelsize=15
 ! URxvt.boldfont:xft:Source Code Pro:antialias=True:pixelsize=15,xft:WenQuanYi Zen Hei:pixelsize=15
 
+
 URxvt.font:xft:Hack:antialias=True:pixelsize=14,xft:WenQuanYi Zen Hei:pixelsize=14
 URxvt.boldfont:xft:Hack:antialias=True:pixelsize=14,xft:WenQuanYi Zen Hei:pixelsize=14
 
-URxvt.perl-ext-common: ...,font-size
+URxvt.perl-ext-common: ...,selection-to-clipboard,pasta,font-size
 URxvt.keysym.C-equal:     perl:font-size:increase
 URxvt.keysym.C--:   perl:font-size:decrease
 ! URxvt.keysym.C-S-Up:   perl:font-size:incglobal
@@ -97,6 +101,8 @@ URxvt.keysym.C--:   perl:font-size:decrease
 URxvt.keysym.C-0:      perl:font-size:reset
 URxvt.keysym.C-slash:  perl:font-size:show
 URxvt.font-size.step:  2
+
+
 
 ! 实现ctrl+shift+c/v的复制粘贴
 ! https://unix.stackexchange.com/questions/444773/how-to-disable-the-ctrlshift-binding-iso-14755-in-urxvt
@@ -106,12 +112,12 @@ URxvt.iso14755_52: false
 
 ! 一定要写全名及大写的C/V,否则无效
 ! Shift/Control 顺序无关
-URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+! URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Control-Shift-V    : perl:pasta:paste
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 
 
 ! 禁用之前的复制粘贴方案
 URxvt.keysym.Control-Meta-c: builtin-string:
 URxvt.keysym.Control-Meta-v: builtin-string:
-
 
