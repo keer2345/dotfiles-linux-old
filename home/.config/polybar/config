@@ -9,6 +9,33 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
+;https://github.com/arcticicestudio/nord
+;Polar Night
+nord-grey1 = #2e3440
+nord-grey1a = #DD2e3440
+nord-grey2 = #3b4252
+nord-grey3 = #434c5e
+nord-grey4 = #4c566a
+
+;Snow Storm
+nord-white1 = #d8dee9
+nord-white1a = #EEd8dee9
+nord-white2 = #e5e9f0
+nord-white3 = #eceff4
+
+:Frost
+nord-frost1 = #8fbcbb
+nord-frost2 = #88c0d0
+nord-frost3 = #81a1c1
+nord-frost4 = #5e81ac
+
+:Aurora
+nord-red = #bf616a
+nord-orange = #d08770
+nord-yellow = #ebcb8b
+nord-green = #a3be8c
+nord-pink = #b48ead
+
 
 [bar/top]
 monitor = ${env:MONITOR:}
@@ -44,7 +71,7 @@ font-2 = FontAwesome:pixelsize=11;1
 
 modules-left = i3
 modules-center = xwindow
-modules-right =volume memory cpu battery time powermenu
+modules-right =volume memory cpu battery time wlan powermenu
 
 tray-position = right
 tray-padding = 6
@@ -230,7 +257,7 @@ label = %percentage_used%%
 [module/wlan]
 type = internal/network
 interface = wlp3s0
-interval = 5.0
+interval = 2.0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
@@ -241,6 +268,7 @@ format-disconnected =
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
+;
 
 ramp-signal-0 = 
 ramp-signal-1 = 
@@ -371,8 +399,6 @@ label-open-foreground = #aaa
 label-close = Back
 label-close-foreground = ${colors.primary}
 label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
 
 ; menu-0-0 = reboot
 ; menu-0-0-exec = menu-open-1
@@ -396,7 +422,19 @@ menu-1-1-exec = i3-msg exit
 ; menu-2-1 = cancel
 ; menu-2-1-exec = menu-open-0
 
+[module/poweroff]
+type = custom/script
+exec = echo " "
+click-left = "power.sh"
+format-foreground = ${colors.nord-red}
 
+[module/wireless]
+type = internal/network
+interface = "wlan0"
+interval = 1
+format-connected = %{T2}%{F#a3be8c}直 %{F- T-}<label-connected>
+format-disconnected = %{T2}%{F#bf616a}睊 %{F- T-}
+label-connected = %essid%
 
 
 [settings]
