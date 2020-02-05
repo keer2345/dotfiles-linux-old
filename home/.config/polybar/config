@@ -71,7 +71,7 @@ font-2 = FontAwesome:pixelsize=11;1
 
 modules-left = i3
 modules-center = xwindow
-modules-right =volume memory cpu temperature battery time wlan powermenu
+modules-right =volume memory cpu temperature battery time powermenu
 
 tray-position = right
 tray-padding = 6
