@@ -188,9 +188,14 @@ bindsym $mod+r mode "resize"
 
 bindsym $mod+p move workspace to output right
 bindsym $mod+shift+p exec "xrandr --output DP-1 --left-of eDP-1 --auto"
-bindsym $mod+ctrl+p exec "xrandr --output eDP-1 --left-of DP-1 --auto"
+bindsym $mod+ctrl+p  exec "xrandr --output eDP-1 --left-of DP-1 --auto"
 # bindsym $mod+shift+u exec "xrandr --output DP-1 --below eDP-1 --auto"
-bindsym $mod+ctrl+u exec "xrandr --output DP-1 --above eDP-1 --auto"
+bindsym $mod+ctrl+u  exec "xrandr --output DP-1 --above eDP-1 --auto"
+
+
+# set correct resolution ratio of notebook
+bindsym $mod+shift+i exec "xrandr && xrandr --output eDP-1 --mode 1600x900"
+bindsym $mod+ctrl+i  exec "xrandr && xrandr --output eDP-1 --mode 1920x1080"
 
 workspace 1 output DP-1
 workspace 2 output DP-1

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# set correct resolution
+# set correct resolution ratio
 # xrandr && xrandr --output eDP-1 --mode 1600x900
 
 # load background
