@@ -226,9 +226,13 @@ hide_edge_borders both
 # bindsym $mod+Ctrl+l exec i3lock
 bindsym $mod+Ctrl+l exec "i3lock && systemctl suspend"
 
+# Autostart applications
 
-exec compton -b
+# exec compton -b
+# exec_always --no-startup-id compton
 # exec_always --no-startup-id compton --config ~/.config/compton/compton.conf
+
+# exec_always xrandr --output "DP-1" --left-of "eDP-1" --auto
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 exec --no-startup-id fcitx -r
