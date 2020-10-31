@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# chmod +x launch.sh
+
 # set correct resolution ratio
 # xrandr && xrandr --output eDP-1 --mode 1600x900
 
